@@ -22,3 +22,70 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+import { useState } from 'react'
+
+const estilo = {
+  usuario: {
+    backgroundColor: "#dac",
+    padding: "10px",
+    borderRadius: "10px",
+    margin: "20px",
+  },
+  textoBotao: {
+    color: "#eee",
+    fontSize: "16px",
+  },
+  botao: {
+    borderRadius: "5px",
+    backgroundColor: "#505560",
+    padding: "10px",
+    margin: "10px",
+  },
+}
+
+export default function Atv01UmItem(){
+const [resultado, setResultado] = useState(<p>Os dados do usuário aparecerão no lugar deste texto</p>)
+
+  async function carregarUsuario(){
+    await fetch(
+     'https://jsonplaceholder.typicode.com/todos/1',
+     {method: 'GET',}
+    )
+    .then((resposta)=>{
+      console.log(resposta)
+      return resposta.json()
+    })
+    .then((resul)=>{
+      console.log(resul)
+      let status = ""
+      if (resul.status === true) {
+        status = "feito"
+      }else{
+        status = "a fazer"
+      }
+      const usu =  <div  style={{
+        margin: "10px", padding: "5px", backgroundColor: "#a89", borderRadius: "5px",
+      }}>
+        <p>{resul.id} - {resul.title}: {status}</p>
+      </div>
+      setResultado(usu)
+    })
+  }
+  return( 
+      <div style={estilo.usuario}>
+
+      <p>
+        Carregue o usuário abaixo:
+      </p>
+
+      <button style={estilo.botao} onClick={() => carregarUsuario()}>
+        <p style={estilo.textoBotao}>Carregar usuário</p>
+      </button>
+
+      <p>
+      {resultado}
+      </p>
+
+    </div>
+  )
+}
