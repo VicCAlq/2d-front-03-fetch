@@ -22,3 +22,15 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+
+
+export default function Atv01UmItem() {
+
+<div>
+
+<button> </button>
+
+  </div>
+
+
+}
