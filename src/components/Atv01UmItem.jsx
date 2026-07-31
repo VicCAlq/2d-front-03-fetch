@@ -22,3 +22,33 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+import { useState } from 'react'
+
+export default function Atv01UmItem() {
+  const [resultado, setResultado] = useState(<p>Os dados do usuário aparecerão no lugar deste texto</p>)
+async function carregamentoDeUsuario(params) {
+  
+}
+  await fetch (
+    https://jsonplaceholder.typicode.com/todos/1
+    { method: 'GET', }
+  )
+  .then((resposta) => {
+      console.log(resposta)
+      return resposta.json()
+  })
+  .then((resultado) => {
+    console.log(resultado)
+    const usuario = <div style={{
+        margin: "10px", padding: "5px", backgroundColor: "#a89", borderRadius: "5px",
+      }}>
+        <p>id: {resultado.email}</p>
+        <p>title: {resultado.website}</p>
+        <p>status: {resultado.}</p>
+      </div>
+  })
+  
+  <div>
+    <button style={estilo.botao} onClick={() => carregamentoDeUsuario()}></button>
+  </div>
+}
