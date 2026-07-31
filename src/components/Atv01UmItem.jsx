@@ -6,7 +6,36 @@
   * "Clique abaixo para carregar uma atividade", que quando pressionado
   * fará uma requisição usando "fetch" para a URL abaixo:
   *
-  * https://jsonplaceholder.typicode.com/todos/1
+  * https://jsonplaceholder.typicode.com/todos/import React, { useState } from 'react';
+
+export default function Atv01UmItem() {
+    const [dado, setDado] = useState(null);
+
+    const carregarAtividade = async () => {
+        try {
+            const resposta = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+            const resultado = await resposta.json();
+            setDado(resultado);
+        } catch (erro) {
+            console.error("Erro ao buscar a atividade:", erro);
+        }
+    };
+
+    const statusTexto = dado ? (dado.completed ? "feito" : "a fazer") : "";
+
+    return (
+        <div>
+            <button onClick={carregarAtividade}>
+                Clique abaixo para carregar uma atividade
+            </button>
+            {dado && (
+                <p>
+                    {dado.id} - {dado.title}: {statusTexto}
+                </p>
+            )}
+        </div>
+    );
+}
   *
   * Esta URL envia um objeto JSON com as propriedades:
   * userId: número inteiro
@@ -22,3 +51,34 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+
+import React, { useState } from 'react';
+
+export default function Atv01UmItem() {
+    const [dado, setDado] = useState(null);
+
+    const carregarAtividade = async () => {
+        try {
+            const resposta = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+            const resultado = await resposta.json();
+            setDado(resultado);
+        } catch (erro) {
+            console.error("Erro ao buscar a atividade:", erro);
+        }
+    };
+
+    const statusTexto = dado ? (dado.completed ? "feito" : "a fazer") : "";
+
+    return (
+        <div>
+            <button onClick={carregarAtividade}>
+                
+            </button>
+            {dado && (
+                <p>
+                    {dado.id} - {dado.title}: {statusTexto}
+                </p>
+            )}
+        </div>
+    );
+}
