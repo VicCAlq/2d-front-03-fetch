@@ -27,3 +27,35 @@
   * Os colchetes indicam que deve se tratar de uma variável, e não
   * do texto dentro deles.
   */
+import { useState } from 'react'
+
+const estilo = {
+  tarefa: {
+    backgroundColor: "#dac",
+    padding: "10px",
+    borderRadius: "10px",
+    margin: "20px",
+  },
+  textoBotao: {
+    color: "#eee",
+    fontSize: "16px",
+  },
+  botao: {
+    borderRadius: "5px",
+    backgroundColor: "#505560",
+    padding: "10px",
+    margin: "10px",
+  },
+}
+
+export default function Atv03TratarErrosDeUm(){
+  async function Carregar(){
+    
+  }
+  return(
+    <div style={estilo.tarefa}>
+      <button onClick={() => Carregar()}
+      style={estilo.botao}><p style={estilo.textoBotao}>Clique abaixo para carregar uma atividade</p></button>
+    </div>
+  )
+}
