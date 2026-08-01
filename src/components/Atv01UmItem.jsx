@@ -22,3 +22,32 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+
+import { useState } from "react";
+
+export default function Atv01UmItem() {
+  const [atividade, setAtividade] = useState(null);
+
+  const carregarAtividade = async () => {
+    const resposta = await fetch(
+      "https://jsonplaceholder.typicode.com/todos/1"
+    );
+    const dados = await resposta.json();
+    setAtividade(dados);
+  };
+
+  return (
+    <div>
+      <button onClick={carregarAtividade}>
+        Clique abaixo para carregar uma atividade
+      </button>
+
+      {atividade && (
+        <p>
+          {atividade.id} - {atividade.title}:{" "}
+          {atividade.completed ? "feito" : "a fazer"}
+        </p>
+      )}
+    </div>
+  );
+}
