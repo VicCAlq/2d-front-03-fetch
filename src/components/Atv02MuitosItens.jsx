@@ -86,3 +86,5 @@ function Atv02MuitosItens() {
     </div>
   )
 }
+
+export default Atv02MuitosItens
