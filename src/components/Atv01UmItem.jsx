@@ -26,29 +26,27 @@ import { useState } from 'react'
 
 export default function Atv01UmItem() {
   const [resultado, setResultado] = useState(<p>Os dados do usuário aparecerão no lugar deste texto</p>)
-async function carregamentoDeUsuario(params) {
-  
-}
+  async function carregamentoDeUsuario() {
+
   await fetch (
-    https://jsonplaceholder.typicode.com/todos/1
-    { method: 'GET', }
+    'https://jsonplaceholder.typicode.com/todos/1'
+    { method: 'GET' }
   )
   .then((resposta) => {
-      console.log(resposta)
       return resposta.json()
   })
   .then((resultado) => {
-    console.log(resultado)
-    const usuario = <div style={{
-        margin: "10px", padding: "5px", backgroundColor: "#a89", borderRadius: "5px",
-      }}>
-        <p>id: {resultado.email}</p>
-        <p>title: {resultado.website}</p>
-        <p>status: {resultado.}</p>
-      </div>
+    let status = ""
+    if (resultado.completed === true) {
+      status = "feito"
+    }
+    setResultado(<div>
+      <p>{resultado.id} - [resultado.title]: {resultado.status}</p>
+    </div>)
   })
-  
+  }
   <div>
     <button style={estilo.botao} onClick={() => carregamentoDeUsuario()}></button>
+    <p>{resultado}</p>
   </div>
 }
