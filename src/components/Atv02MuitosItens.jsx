@@ -38,7 +38,31 @@ function Atv02MuitosItens() {
     )
 
     .then((respostas) => {
-      return respostas.json();
+       const elementos = <div
+        style={{display: "flex", flexDirection: "column", gap: "10px",
+        width: "500px", margin: "10px auto"}}
+      >
+        {respostas.map((Item) => {
+          let status;
+
+          if (Item.completed) {
+            status = "feito";
+          }
+
+          else{
+            status = "a fazer";
+          }
+          return(<div
+          style={{
+            backgroundColor: "#77aaee"
+          }}>
+            <p>{Item.id} - {Item.title}: {status}</p>
+          </div>) 
+          })
+        }
+      </div>
+
+      setComentarios(elementos)
     })
 
     .then((resultados) => {
