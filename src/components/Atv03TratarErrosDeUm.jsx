@@ -27,3 +27,36 @@
   * Os colchetes indicam que deve se tratar de uma variável, e não
   * do texto dentro deles.
   */
+import { useState } from 'react';
+export default function Atv03TratarErrosDeUm() {
+  const [r, setR] = useState("");
+  async function f() {
+    await fetch('https://jsonplaceholder.typicode.com/comments/20')
+      .then((a) => {
+        if (!a.ok) {
+          throw new Error();
+        }
+        return a.json();
+      })
+      .then((b) => {
+        setR(
+          <>
+            <p>{b.postId}: {b.id} - {b.email}</p>
+            <p>{b.name}</p>
+            <p>{b.body}</p>
+          </>
+        );
+      })
+      .catch((c) => {
+        setR(<p>Erro</p>);
+      });
+  }
+  return (
+    <div>
+      <button onClick={f}>
+        Clique abaixo para carregar uma atividade
+      </button>
+      <div>{r}</div>
+    </div>
+  );
+}

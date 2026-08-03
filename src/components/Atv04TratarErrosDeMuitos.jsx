@@ -28,3 +28,39 @@
   * Os colchetes indicam que deve se tratar de uma variável, e não
   * do texto dentro deles.
   */
+
+import { useState } from 'react';
+export default function Atv04TratarErrosDeMuitos() {
+  const [r, setR] = useState("");
+  async function f() {
+    await fetch('https://jsonplaceholder.typicode.com/comments')
+      .then((a) => {
+        if (!a.ok) {
+          throw new Error();
+        }
+        return a.json();
+      })
+      .then((b) => {
+        setR(
+          b.map((i) => (
+            <div key={i.id}>
+              <p>{i.postId}: {i.id} - {i.email}</p>
+              <p>{i.name}</p>
+              <p>{i.body}</p>
+            </div>
+          ))
+        );
+      })
+      .catch((c) => {
+        setR(<p>Erro</p>);
+      });
+  }
+  return (
+    <div>
+      <button onClick={f}>
+        Clique abaixo para carregar uma atividade
+      </button>
+      <div>{r}</div>
+    </div>
+  );
+}

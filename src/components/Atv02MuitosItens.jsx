@@ -23,3 +23,27 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+import { useState } from 'react';
+export default function Atv02MuitosItens() {
+  const [r, setR] = useState([]);
+  async function f() {
+    await fetch('https://jsonplaceholder.typicode.com/todos')
+      .then((a) => a.json())
+      .then((b) => {
+        setR(
+          b.map((i) => {
+            const s = i.completed ? "feito" : "a fazer";
+            return <p key={i.id}>{i.id} - {i.title}: {s}</p>;
+          })
+        );
+      });
+  }
+  return (
+    <div>
+      <button onClick={f}>
+        Clique abaixo para carregar várias atividades
+      </button>
+      <div>{r}</div>
+    </div>
+  );
+}
