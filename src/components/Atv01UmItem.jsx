@@ -57,7 +57,7 @@ function Atv01UmItem() {
         status = "a fazer";
       }
 
-      setResultado(`${id} - ${title}: ${status}`);
+      setResultado(<p>{id} - {title}: {status}</p>);
     })
 
   }
