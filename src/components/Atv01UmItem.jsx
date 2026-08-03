@@ -23,12 +23,23 @@
   * ou "a fazer" se completed for false
   */
 
+import {useState} from "react";
 
 export default function Atv01UmItem() {
+  const [resposta, setResposta] = useState =""
+
+async carregarAtividade() => {
+  await fetch (
+    "https://jsonplaceholder.typicode.com/todos/1", method: "GET"
+  )
+  .then ((resposta) => {
+    return resposta.json
+  })
+}
 
 <div>
 
-<button> </button>
+<button onClick = {() => carregarAtividade()}>Carregar atividade</button>
 
   </div>
 
