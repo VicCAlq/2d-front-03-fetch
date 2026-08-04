@@ -39,14 +39,42 @@ function Atv03TratarErrosDeUm() {
   async function carregarComentario() {
     await fetch('https://jsonplaceholder.typicode.com/comments/20',
       {method: "GET"}
+    )
 
         .then((resposta) => {
           if (resposta.ok) {
           return resposta.json()
-    }
+        }
+
+        else{
+          throw new Error("Erro na requisição");
+        }
   })
 
-    )
+        .then((resultado) => {
+          const postId = resultado.postId;
+          const id = resultado.id;
+          const name = resultado.name;
+          const email = resultado.email;
+          const body = resultado.body;
+
+          const dados = (
+             <div>
+              <p>{postId}: {id} - {email}</p>
+              <p>{name}</p>
+              <p>{body}</p>
+            </div>
+          )
+
+          setComentario(dados);
+
+        })
+
+        .catch((erro) => {
+          setComentario("Erro ao carregar o comentário");
+          console.log(erro);
+        })
+
   }
 
   return(
