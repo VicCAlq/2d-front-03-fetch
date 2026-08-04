@@ -26,22 +26,36 @@
 import {useState} from "react";
 
 export default function Atv01UmItem() {
-  const [resposta, setResposta] = useState =""
+  const [resposta, setResposta]  = useState ("")
 
-async carregarAtividade() => {
-  await fetch (
-    "https://jsonplaceholder.typicode.com/todos/1", method: "GET"
+async function carregarAtividade() {
+  const response = await fetch(  "https://jsonplaceholder.typicode.com/todos/1", { method: "GET" }
   )
-  .then ((resposta) => {
-    return resposta.json
-  })
-}
 
-<div>
+  const resultado = await response.json();
+ 
 
-<button onClick = {() => carregarAtividade()}>Carregar atividade</button>
+  let status;
+if (resultado.completed) {
+    status = "feito";
+} else {status = "a fazer"};
+
+
+  const texto =`${resultado.id} - ${resultado.title}: ${status}`;
+
+setResposta(texto);
+  }
+
+return (
+  <div>
+
+    <button onClick={carregarAtividade}>
+      Clique abaixo para carregar uma atividade
+    </button>
+
+    <p>{resposta}</p>
 
   </div>
-
+);
 
 }
