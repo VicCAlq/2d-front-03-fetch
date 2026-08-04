@@ -33,7 +33,7 @@
 import { useState} from "react"
 
 
-export default function Atv04 TratarErros DeMuitos() {
+export default function Atv04TratarErrosDeMuitos() {
 
 const [comentarios, setComentarios] = useState(<p>
 Aqui serão recebidos os comentários
@@ -45,32 +45,44 @@ await fetch(
 "https://jsonplaceholder.typicode.com/comments",
 { method: "GET"}
 )
-.then((resposta) {
+.then((resposta) => {
 
-  if (!respota.ok) {
-throw new Error('Erro na requisição: ${resposta.status}')
+  if (!resposta.ok) {
+throw new Error(`Erro na requisição: ${resposta.status}`)
   }
-  return reposta.json()
+  return resposta.json()
 })
 
-.then(listaDeComentarios) => {
-  setComentarios( <div
+.then ((listaDeComentarios) => {
+
+  setComentarios( 
+  <div
   style={{}}>
-    {listaDeComentarios.map(comentarios)=>
-    {return( <div>
+
+    {listaDeComentarios.map((comentarios)=> { 
+
+       return( 
+       <div key ={comentarios.id}>
       <p>{comentarios.postId}:{comentarios.id}-{comentarios.email}</p>
       <p>{comentarios.name}</p>
       <p>{comentarios.body}</p>
-    </div> )}}
-  </div> )
-}
-catch.((error){
+    
+    </div>
+   );
+
+})}
+
+  </div> 
+  );
+})
+
+.catch((error) => {
   window.alert(error)
 })
 
 return(
 <div>
-  <button onClick ={() => carregarComentarios()}>
+  <button onClick ={() => carregarComentarios()}>Carregar comentários
     </button>
     {comentarios}
 </div>
