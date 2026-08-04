@@ -27,3 +27,41 @@
   * Os colchetes indicam que deve se tratar de uma variável, e não
   * do texto dentro deles.
   */
+
+import { useState } from "react"
+
+function Atv03TratarErrosDeUm() {
+
+  const[comentario, setComentario] = useState(
+    <p>Aqui será recebido o comentário</p>
+  )
+
+  async function carregarComentario() {
+    await fetch('https://jsonplaceholder.typicode.com/comments/20',
+      {method: "GET"}
+
+        .then((resposta) => {
+          if (resposta.ok) {
+          return resposta.json()
+    }
+  })
+
+    )
+  }
+
+  return(
+    <div>
+
+    <button onClick={() => carregarComentario()}>
+      Clique abaixo para carregar uma atividade
+    </button>
+
+    <div>
+      {comentario}
+    </div>
+
+    </div>
+  )
+}
+
+export default Atv03TratarErrosDeUm
