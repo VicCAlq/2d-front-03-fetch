@@ -78,7 +78,7 @@ if (item.completed) {
   status = "a fazer"
 }
 
-return `${item.id}` - ${item.title}: ${status};
+return `${item.id}` - `${item.title}:` `${status}`;
 
 })
 
