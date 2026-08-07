@@ -32,7 +32,9 @@ import {useState} from "react"
 
 export default function Atv03TratarErrosDeUm(){
 
-  const [comentario, setComentario] = useState ()
+  const [comentario, setComentario] = useState (<p>
+    Aqui serão recebidos os comentários
+  </p>)
   
   async function carregarComentarios() {
     await fetch(

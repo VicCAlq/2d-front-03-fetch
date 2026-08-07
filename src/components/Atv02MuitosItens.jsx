@@ -29,7 +29,9 @@ import {useState} from "react"
 
 export default  function Atv02MuitosItens(){
 
-  const [comentario, setComentario] = useState ()
+  const [comentario, setComentario] = useState (<p>
+    Aqui serão recebidos os comentários
+  </p>)
 
   async function carregarComentario() {
     await fetch(
