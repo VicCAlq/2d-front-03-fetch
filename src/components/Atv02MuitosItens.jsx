@@ -37,6 +37,10 @@ function Atv02MuitosItens() {
       {method: "GET"}
     )
 
+    .then((resultado) => {
+      return resultado.json()
+    })
+
     .then((respostas) => {
        const elementos = <div
         style={{display: "flex", flexDirection: "column", gap: "10px",
@@ -61,35 +65,6 @@ function Atv02MuitosItens() {
           })
         }
       </div>
-
-      setComentarios(elementos)
-    })
-
-    .then((resultados) => {
-
-      const lista = [];
-
-      for (const item of resultados) {
-
-        const userId = item.userId
-        const id = item.id
-        const title = item.title
-        const completed = item.completed
-
-        let status;
-
-        if (completed) {
-          status = "feito";
-        }
-
-        else{
-          status = "a fazer";
-        }
-
-        lista.push(
-          <p key={id}>{id} - {title}: {status}</p>
-        )
-      }
 
       setResultados(lista);
     })
