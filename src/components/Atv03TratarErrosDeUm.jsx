@@ -42,12 +42,12 @@ function Atv03TratarErrosDeUm() {
     )
 
         .then((resposta) => {
-          if (resposta.ok) {
-          return resposta.json()
+          if (!resposta.ok) {
+            throw new Error("Erro na requisição");
         }
 
         else{
-          throw new Error("Erro na requisição");
+          return resposta.json()
         }
   })
 
