@@ -31,7 +31,7 @@
 
 import {useState} from "react"
 
-export default  Atv04TratarErrosDeMuitos()[
+export default  function Atv04TratarErrosDeMuitos(){
 
   const [comentarios, setComentarios] = useState (
     <p> Aqui serão recebidos os comentários</p>
@@ -53,7 +53,7 @@ export default  Atv04TratarErrosDeMuitos()[
       setComentarios(<div>
         {listaDeComentarios.map((comentario) => {
           return(<div>
-            <p>{comentario.postId}: {comntario.id} - {comentario.email}</p>
+            <p>{comentario.postId}: {comentario.id} - {comentario.email}</p>
             <p>{comentario.name}</p>
             <p>{comentario.body}</p>
           </div>)
@@ -73,4 +73,4 @@ export default  Atv04TratarErrosDeMuitos()[
       {comentarios}
     </div>
   )
-]
+}
