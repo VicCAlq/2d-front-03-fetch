@@ -23,3 +23,91 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+import {useState} from 'react'
+
+function Atv02MuitosItens() {
+
+  const[resultados, setResultados] = useState([]);
+
+  async function carregarAtividades() {
+
+    await fetch(
+      'https://jsonplaceholder.typicode.com/todos',
+      {method: "GET"}
+    )
+
+    .then((respostas) => {
+       const elementos = <div
+        style={{display: "flex", flexDirection: "column", gap: "10px",
+        width: "500px", margin: "10px auto"}}
+      >
+        {respostas.map((Item) => {
+          let status;
+
+          if (Item.completed) {
+            status = "feito";
+          }
+
+          else{
+            status = "a fazer";
+          }
+          return(<div
+          style={{
+            backgroundColor: "#77aaee"
+          }}>
+            <p>{Item.id} - {Item.title}: {status}</p>
+          </div>) 
+          })
+        }
+      </div>
+
+      setComentarios(elementos)
+    })
+
+    .then((resultados) => {
+
+      const lista = [];
+
+      for (const item of resultados) {
+
+        const userId = item.userId
+        const id = item.id
+        const title = item.title
+        const completed = item.completed
+
+        let status;
+
+        if (completed) {
+          status = "feito";
+        }
+
+        else{
+          status = "a fazer";
+        }
+
+        lista.push(
+          <p key={id}>{id} - {title}: {status}</p>
+        )
+      }
+
+      setResultados(lista);
+    })
+  }
+
+  return(
+
+    <div>
+
+      <button onClick={() => carregarAtividades()}>
+        Clique abaixo para carregar várias atividades
+      </button>
+
+      <div>
+        {resultados}
+      </div>
+
+    </div>
+  )
+}
+
+export default Atv02MuitosItens

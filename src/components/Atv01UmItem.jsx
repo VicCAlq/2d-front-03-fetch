@@ -22,3 +22,19 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+ import {useState} from 'react'
+
+function Atv01UmItem() {
+
+  const[resultado, setResultado] = useState("");
+
+  async  function carregarAtividade() {
+
+    await fetch(
+      'https://jsonplaceholder.typicode.com/todos/1',
+      {method: "GET"}
+    )
+
+    .then((resposta) => {
+      return resposta.json();
+    })
