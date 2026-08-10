@@ -85,5 +85,6 @@ export default function Exemplo01Fetch() {
       </button>
       {resultado}
     </div>
+    
   )
 }

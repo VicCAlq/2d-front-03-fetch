@@ -1,3 +1,4 @@
+
 /*
   * ATIVIDADE 03: TRATAR ERROS DE UM
   *
@@ -6,6 +7,7 @@
   * "Clique abaixo para carregar uma atividade", que quando pressionado
   * fará uma requisição usando "fetch" para a URL abaixo:
   *
+  * 
   * https://jsonplaceholder.typicode.com/comments/20
   *
   * Esta URL envia um objeto JSON com as propriedades:
@@ -15,6 +17,7 @@
   * email: texto
   * body: texto
   *
+  * 
   * Ao receber este conteúdo, você deve tratar ele dentro do primeiro ".then"
   * para verificar se existe um "ok" dentro da resposta, e tratar por erros
   * de requisição após o segundo ".then" dentro de um ".catch".
@@ -27,3 +30,29 @@
   * Os colchetes indicam que deve se tratar de uma variável, e não
   * do texto dentro deles.
   */
+
+
+export function  Atv03TratarErrosDeUm() {
+  import { useState } from "react" 
+
+
+ const [resposta, setResposta]  = useState ("")
+async function carregarAtividade() {
+  
+} 
+
+return  ( 
+
+ 
+  <div>
+
+<button onClick = {carregarAtividade}>
+
+</button>
+
+  </div>
+
+
+
+ )
+}
