@@ -31,7 +31,7 @@
   * do texto dentro deles.
   */
 
-
+/*
 export function  Atv03TratarErrosDeUm() {
   import { useState } from "react" 
 
@@ -55,4 +55,48 @@ return  (
 
 
  )
+}
+*/
+
+
+
+import { useState } from "react";
+
+export default function Atv03TratarErrosDeUm() {
+  const [resposta, setResposta] = useState(null);
+
+  function carregarAtividade() {
+    fetch("https://jsonplaceholder.typicode.com/comments/20")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erro na requisição");
+        }
+
+        return response.json();
+      })
+      .then((dados) => {
+        setResposta(dados);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+  }
+
+  return (
+    <div>
+      <button onClick={carregarAtividade}>
+        Clique abaixo para carregar uma atividade
+      </button>
+
+      {resposta && (
+        <div>
+          <p>
+            {resposta.postId}: {resposta.id} - {resposta.email}
+          </p>
+          <p>{resposta.name}</p>
+          <p>{resposta.body}</p>
+        </div>
+      )}
+    </div>
+  );
 }
