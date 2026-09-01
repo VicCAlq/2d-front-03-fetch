@@ -23,3 +23,32 @@
   * O valor de "status" deve ser "feito" se completed for true, 
   * ou "a fazer" se completed for false
   */
+
+import { useState } from 'react';
+
+export default function Atv02MuitosItens() {
+  const [lista, setLista] = useState([]);
+
+  const carregarAtividades = () => {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then((resposta) => resposta.json())
+      .then((dados) => setLista(dados))
+      .catch((erro) => console.error('Erro ao carregar as atividades:', erro));
+  };
+
+  return (
+    <div>
+      <button onClick={carregarAtividades}>
+        Clique abaixo para carregar várias atividades
+      </button>
+
+      <div>
+        {lista.map((item) => (
+          <p key={item.id}>
+            {item.id} - {item.title}: {item.completed ? 'feito' : 'a fazer'}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
